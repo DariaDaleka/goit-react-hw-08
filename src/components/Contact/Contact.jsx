@@ -1,29 +1,18 @@
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
-import { FaUser, FaPhone, FaTrash } from "react-icons/fa";
-import styles from "./Contact.module.css";
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contacts/operations';
+import css from './Contact.module.css';
 
-const Contact = ({ id, name, number }) => {
+export const Contact = ({ id, text }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(deleteContact(id));
-  };
+  const handleDelete = () => dispatch(deleteContact(id));
 
   return (
-    <div className={styles.container}>
-      <div className={styles.item}>
-        <FaUser className={styles.icon} />
-        <h3 className={styles.name}>{name}</h3>
-        <FaPhone className={styles.icon} />
-        <p className={styles.phone}>{number}</p>
-      </div>
-      <button className={styles.btn} onClick={handleDelete}>
-        <FaTrash className={styles.btnIcon} />
+    <div className={css.wrapper}>
+      <p className={css.text}>{text}</p>
+      <button type="button" className={css.button} onClick={handleDelete}>
         Delete
       </button>
     </div>
   );
 };
-
-export default Contact;
