@@ -1,42 +1,55 @@
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/operations';
-import css from './LoginForm.module.css';
+import { Formik, Form, Field } from "formik";
 
-export const LoginForm = () => {
+import { useDispatch } from "react-redux";
+import { logIn } from "../../redux/auth/operations";
+
+import s from "./LoginForm.module.css";
+
+const initForm = {
+  email: "",
+  password: "",
+};
+
+const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-
-    dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    )
-      .unwrap()
-      .then(() => {
-        console.log('login success');
-      })
-      .catch(() => {
-        console.log('login error');
-      });
-
-    form.reset();
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(logIn(values));
+    resetForm();
   };
-
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+    <div className={s.wrapp}>
+      <Formik initialValues={initForm} onSubmit={handleSubmit}>
+        <Form className={s.form}>
+          <label className={s.label}>
+            Email
+            <Field
+              className={s.field}
+              type="email"
+              name="email"
+              placeholder="Enter email..."
+            />
+          </label>
+          <label className={s.label}>
+            Password
+            <Field
+              className={s.field}
+              type="password"
+              name="password"
+              placeholder="Enter password..."
+            />
+          </label>
+          <button className={s.btn} type="submit">
+            Log In
+          </button>
+        </Form>
+      </Formik>
+      <div className={s.textWrapp}>
+        <h2>Login now!</h2>
+        <p>To go to contacts, enter your login and password</p>
+      </div>
+    </div>
   );
 };
+
+export default LoginForm;
