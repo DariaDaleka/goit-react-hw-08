@@ -1,8 +1,6 @@
 import { Formik, Form, Field } from "formik";
-
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
-
 import s from "./LoginForm.module.css";
 
 const initForm = {
@@ -17,8 +15,13 @@ const LoginForm = () => {
     dispatch(logIn(values));
     resetForm();
   };
+
   return (
-    <div className={s.wrapp}>
+    <div className={s.wrapper}>
+      <div className={s.textWrapper}>
+        <h2>Welcome Back!</h2>
+        <p>Please log in to access your contacts.</p>
+      </div>
       <Formik initialValues={initForm} onSubmit={handleSubmit}>
         <Form className={s.form}>
           <label className={s.label}>
@@ -27,7 +30,7 @@ const LoginForm = () => {
               className={s.field}
               type="email"
               name="email"
-              placeholder="Enter email..."
+              placeholder="Enter your email..."
             />
           </label>
           <label className={s.label}>
@@ -36,18 +39,16 @@ const LoginForm = () => {
               className={s.field}
               type="password"
               name="password"
-              placeholder="Enter password..."
+              placeholder="Enter your password..."
             />
           </label>
-          <button className={s.btn} type="submit">
-            Log In
-          </button>
+          <div className={s.buttonWrapper}>
+            <button className={s.btn} type="submit">
+              Log In
+            </button>
+          </div>
         </Form>
       </Formik>
-      <div className={s.textWrapp}>
-        <h2>Login now!</h2>
-        <p>To go to contacts, enter your login and password</p>
-      </div>
     </div>
   );
 };

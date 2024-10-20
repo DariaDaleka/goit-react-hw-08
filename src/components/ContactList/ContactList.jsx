@@ -6,11 +6,11 @@ import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
 
 const ContactList = () => {
-  const filteredContact = useSelector(selectFilteredContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
 
   return (
-    <ul className={s.list}>
-      {filteredContact.map((contact) => (
+    <ul className={s.contactList}>
+      {filteredContacts.map((contact) => (
         <Contact key={contact.id} contact={contact} />
       ))}
     </ul>

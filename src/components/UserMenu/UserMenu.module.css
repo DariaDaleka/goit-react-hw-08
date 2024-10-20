@@ -1,9 +1,36 @@
 .wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 5px;
+    
 }
 
-.username {
-    font-weight: 700;
+.userName {
+    font-size: 1.2rem;
+    color: #343a40;
+    margin: 0;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.btn {
+    margin-left: 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #c82333;
 }

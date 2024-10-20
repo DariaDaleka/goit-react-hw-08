@@ -1,34 +1,66 @@
-.wrapper {
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+.icon {
+    color: #007bff;
+    margin-right: 5px;
+    transition: color 0.3s;
+}
+
+
+.contact {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 4px;
-    border: 1px solid #2a2a2a;
-    border-radius: 4px;
 }
 
-.text {
-    margin-top: 0;
-    margin-bottom: 0;
+.name {
+    margin-right: 10px;
+    font-weight: bold;
 }
 
-.button {
+.number {
+    margin-right: 20px;
+}
+
+.wrappBtn {
+    display: flex;
+    align-items: center;
+}
+
+.btn {
+    background: transparent;
     border: none;
-    font: inherit;
     cursor: pointer;
-    outline: none;
-    margin-left: auto;
-    border-radius: 4px;
-    padding: 8px 12px;
-    background-color: #3f51b5;
-    color: #fff;
+    color: white;
+    font-size: 20px;
 }
 
-.button:hover,
-.button:focus {
-    background-color: #303f9f;
+.btn:hover {
+    color: #007bff;
 }
 
-.button:active {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+.editFormContainer {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
+
+.title {
+    margin-bottom: 10px;
+}
+
+.span {
+    color: #007bff;
+}
+
+
+

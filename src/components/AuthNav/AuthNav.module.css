@@ -1,11 +1,37 @@
+
+
 .link {
-    display: inline-block;
     text-decoration: none;
-    padding: 12px;
+    padding: 10px 15px;
+    border-radius: 4px;
     font-weight: 700;
-    color: #2a363b;
 }
 
-.link.active {
-    color: #e84a5f;
+
+.signup {
+    background-color: transparent;
+    color: #007bff;
+    margin-bottom: 8px;
+}
+
+.signup:hover {
+    color: #034489;
+
+}
+
+.login {
+    background-color: #007bff;
+    color: white;
+}
+
+.login:hover {
+    background-color: #034489;
+
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+    color: #034489;
+
 }

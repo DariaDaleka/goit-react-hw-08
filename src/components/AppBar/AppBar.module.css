@@ -1,7 +1,22 @@
 .header {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.navWrapper {
+    background-color: #323030;
+    padding-left: 30px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
-    border-bottom: 1px solid #2a363b;
+}
+
+.authWrapper  {
+    background-color: white;
+    padding: 32px 12px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }

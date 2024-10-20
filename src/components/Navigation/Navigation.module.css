@@ -1,11 +1,31 @@
-.link {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px;
-    font-weight: 700;
-    color: #2a363b;
+.nav {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
-.link.active {
-    color: #e84a5f;
+.link {
+    color: white;
+    font-weight: 500;
+    padding: 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #79797a;
+    
+}
+
+.active {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    
+}
+
+.divider {
+    margin: 0 10px;
+    height: 20px;
+    border-left: 1px solid #ccc;
 }

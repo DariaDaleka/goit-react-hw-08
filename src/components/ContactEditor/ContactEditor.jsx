@@ -3,8 +3,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact, updateContact } from "../../redux/contacts/operations";
 import s from "./ContactEditor.module.css";
-import { IoCloseSharp, IoPersonAddSharp } from "react-icons/io5";
-import { FiCheck } from "react-icons/fi";
+
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
@@ -14,27 +13,24 @@ const contactSchema = Yup.object().shape({
   number: Yup.string()
     .matches(
       /^[0-9()+\-\s]+$/,
-      "The phone number can only contain numbers and symbols +, -, (, ) and spaces')"
+      "The phone number can only contain numbers and symbols +, -, (, ) and spaces"
     )
     .min(3, "Min 3 characters")
     .max(50, "Max 50 characters")
     .required("Required field!"),
 });
 
-const ContactEditor = ({ contact = null, onClose }) => {
+const ContactEditor = ({ contact = null, onClose }) => { // Принимаем onClose
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
     if (contact) {
-      // Если контакт существует, то обновляем его
       dispatch(updateContact({ id: contact.id, ...values }));
+      onClose(); // Закрываем модалку после успешного обновления
     } else {
-      // Если контакт не существует, создаем новый
       dispatch(addContact(values));
-      resetForm(); // Очищаем форму после добавления
-    }
-    if (onClose) {
-      onClose(); // Закрываем форму после обновления или создания
+      resetForm();
+      onClose(); // Закрываем модалку после успешного добавления
     }
   };
 
@@ -74,14 +70,9 @@ const ContactEditor = ({ contact = null, onClose }) => {
             <ErrorMessage className={s.error} name="number" component="span" />
           </label>
           <div className={s.wrappBtn}>
-            <button type="submit" className={s.btnCheck}>
-              {contact ? <FiCheck /> : <IoPersonAddSharp />}
+            <button type="submit" className={s.btn}>
+              {contact ? "Update" : "Add Contact"}
             </button>
-            {onClose && (
-              <button type="button" onClick={onClose} className={s.btn}>
-                <IoCloseSharp />
-              </button>
-            )}
           </div>
         </Form>
       )}
@@ -89,4 +80,4 @@ const ContactEditor = ({ contact = null, onClose }) => {
   );
 };
 
-export default ContactEditor; // Экспортируем новый компонент
+export default ContactEditor;
