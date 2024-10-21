@@ -1,17 +1,17 @@
-import { RotatingLines } from "react-loader-spinner";
+import { Oval } from 'react-loader-spinner';
 
-import s from "./Loader.module.css";
+import s from './Loader.module.css';
 
 const Loader = () => (
   <div className={s.load}>
-    <RotatingLines
+    <Oval
       visible={true}
-      height="30"
-      width="30"
-      strokeColor="grey"
-      strokeWidth="2"
-      animationDuration="0.75"
-      ariaLabel="rotating-lines-loading"
+      height={40}
+      width={40}
+      color="grey"
+      strokeWidth={4}
+      secondaryColor="lightgrey"
+      ariaLabel="oval-loading"
       wrapperStyle={{}}
       wrapperClass=""
     />

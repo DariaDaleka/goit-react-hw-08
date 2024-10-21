@@ -46,20 +46,54 @@
     color: #007bff;
 }
 
-.editFormContainer {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
+.modalBoxDelete {
+    width: 400px;
+    height: 150px;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    margin: auto;
+    margin-top: 40px;
+    padding: 16px;
+    background-color: #d0d6d2;
+    text-align: center;
+}
+
+.modalBoxEdit {
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 40px;
+    padding: 16px;
+    background-color: #d0d6d2;
+    display: flex;
+        justify-content: center;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    gap: 20px;
+}
+
+.btnDetele {
+    
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnDelete:hover {
+    background-color: #007bff;
 }
 
 .title {
-    margin-bottom: 10px;
-}
-
-.span {
-    color: #007bff;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 16px;
 }
 
 

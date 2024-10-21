@@ -1,0 +1,52 @@
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnCheck:hover {
+    background-color: #007bff;
+}
+
+.btn:hover {
+    background-color: #007bff;
+}
+
+.form {
+    border-radius: 8px;
+    width: 300px;
+    font-weight: bold;
+
+    
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.field {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background-color: transparent;
+    color: black;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}

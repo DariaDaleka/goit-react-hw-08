@@ -1,21 +1,25 @@
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
-import { RiPhoneFill } from "react-icons/ri";
-import { IoPerson } from "react-icons/io5";
-import { MdDelete } from "react-icons/md";
-import { FaUserEdit } from "react-icons/fa";
-import s from "./Contact.module.css";
-import ContactEditor from "../ContactEditor/ContactEditor"; // Импортируем ContactEditor
-import { useState } from "react";
-import { Modal, Box } from "@mui/material"; // Импортируем модальные компоненты
+import { useDispatch } from 'react-redux';
+import { deleteContact } from '../../redux/contacts/operations';
+import { RiPhoneFill } from 'react-icons/ri';
+import { IoPerson } from 'react-icons/io5';
+import { MdDelete } from 'react-icons/md';
+import { FaUserEdit } from 'react-icons/fa';
+import s from './Contact.module.css';
+import ContactForm from '../ContactForm/ContactForm';
+import { useState } from 'react';
+import { Modal, Box } from '@mui/material';
 
 const Contact = ({ contact }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const dispatch = useDispatch();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  const handleEditToggle = () => {
-    setIsEditing((prev) => !prev);
-  };
+  const handleEditModalOpen = () => setIsEditModalOpen(true);
+  const handleEditModalClose = () => setIsEditModalOpen(false);
+
+  const handleDeleteModalOpen = () => setIsDeleteModalOpen(true);
+  const handleDeleteModalClose = () => setIsDeleteModalOpen(false);
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -29,32 +33,37 @@ const Contact = ({ contact }) => {
           </span>
         </div>
         <div className={s.wrappBtn}>
-          <button className={s.btn} onClick={() => dispatch(deleteContact(contact.id))}>
+          <button className={s.btn} onClick={handleDeleteModalOpen}>
             <MdDelete />
           </button>
-          <button onClick={handleEditToggle} className={s.btn}>
+          <button onClick={handleEditModalOpen} className={s.btn}>
             <FaUserEdit />
           </button>
         </div>
       </li>
 
-      {/* Модальное окно для редактирования контакта */}
-      <Modal open={isEditing} onClose={handleEditToggle}>
-        <Box
-          sx={{
-            width: 400,
-            height: 'auto',
-            borderRadius: 5,
-            margin: "auto",
-            marginTop: 100,
-            padding: 2,
-            backgroundColor: "white",
-          }}
-        >
-          <h4 className={s.title}>
-            Editing a <span className={s.span}>contact</span>
-          </h4>
-          <ContactEditor contact={contact} onClose={handleEditToggle} /> {/* Передаем contact */}
+      <Modal open={isDeleteModalOpen} onClose={handleDeleteModalClose}>
+        <Box className={s.modalBoxDelete}>
+          <h4>Are you sure you want to delete this contact?</h4>
+          <div className={s.buttonGroup}>
+            <button
+              className={s.btnDelete}
+              onClick={() => {
+                dispatch(deleteContact(contact.id));
+                handleDeleteModalClose();
+              }}>
+              Delete
+            </button>
+            <button className={s.btnDelete} onClick={handleDeleteModalClose}>
+              Cancel
+            </button>
+          </div>
+        </Box>
+      </Modal>
+
+      <Modal open={isEditModalOpen} onClose={handleEditModalClose}>
+        <Box className={s.modalBoxEdit}>
+          <ContactForm contact={contact} onClose={handleEditModalClose} />
         </Box>
       </Modal>
     </>
